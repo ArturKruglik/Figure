@@ -1,0 +1,12 @@
+Создал три таблицы:
+1. Таблица с авторами - authors(id,fio)
+2. Таблица с книгами - books(id,name)
+3. Таблица связей - tie_authors_books (id,id_author,id_books)
+
+Запрос, который выводит имена авторов, которые написали меньше семи книг:
+SELECT a.fio
+FROM `books` b
+  JOIN `tie_authors_books` t on b.id = t.id_book
+JOIN `authors` a on t.id_author = a.id
+GROUP BY a.fio
+HAVING COUNT(t.id_author)<7
